@@ -1,0 +1,53 @@
+# 4 Queens Problem
+board = [[0]*4 for i in range(4)]
+
+def safe(row, col):
+
+    for i in range(col):
+        if board[row][i] == 1:
+            return False
+
+    i = row
+    j = col
+
+    while i >= 0 and j >= 0:
+        if board[i][j] == 1:
+            return False
+        i -= 1
+        j -= 1
+
+    i = row
+    j = col
+
+    while i < 4 and j >= 0:
+        if board[i][j] == 1:
+            return False
+        i += 1
+        j -= 1
+
+    return True
+
+def solve(col):
+
+    if col >= 4:
+        return True
+
+    for row in range(4):
+
+        if safe(row, col):
+
+            board[row][col] = 1
+
+            if solve(col + 1):
+                return True
+
+            board[row][col] = 0
+
+    return False
+
+solve(0)
+
+print("Solution:")
+
+for i in board:
+    print(i)
