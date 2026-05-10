@@ -1,0 +1,30 @@
+# Breadth First Search
+graph = {}
+
+n = int(input("Enter number of nodes: "))
+
+for i in range(n):
+    node = input("Enter node name: ")
+    neighbours = input("Enter neighbours separated by space: ").split()
+    graph[node] = neighbours
+
+visited = []
+queue = []
+
+def bfs(start):
+    visited.append(start)
+    queue.append(start)
+
+    while queue:
+        node = queue.pop(0)
+        print(node)
+
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                visited.append(neighbour)
+                queue.append(neighbour)
+
+start = input("Enter starting node: ")
+
+print("BFS Traversal is:")
+bfs(start)
