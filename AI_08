@@ -1,0 +1,70 @@
+# Kruskal Algorithm
+e = []
+
+n = int(input("Enter number of edges: "))
+for i in range(n):
+
+    u = int(input("Enter first vertex: "))
+    v = int(input("Enter second vertex: "))
+    w = int(input("Enter weight: "))
+    e.append([w, u, v])
+e.sort()
+
+p = []
+
+for i in range(10):
+    p.append(i)
+
+print("Kruskal MST:")
+
+for w, u, v in e:
+
+    if p[u] != p[v]:
+
+        print(u, "-", v, "=", w)
+
+        old = p[v]
+
+        for i in range(10):
+
+            if p[i] == old:
+                p[i] = p[u]
+
+
+# Dijkstra Algorithm
+n = int(input("\nEnter number of vertices: "))
+
+g = []
+
+print("Enter cost matrix:")
+
+for i in range(n):
+    g.append(list(map(int, input().split())))
+
+v = [0] * n
+d = [999] * n
+
+s = int(input("Enter source vertex: "))
+
+d[s] = 0
+
+for k in range(n):
+
+    m = 999
+
+    for i in range(n):
+
+        if not v[i] and d[i] < m:
+
+            m = d[i]
+            u = i
+
+    v[u] = 1
+
+    for j in range(n):
+
+        if g[u][j] and d[u] + g[u][j] < d[j]:
+
+            d[j] = d[u] + g[u][j]
+
+print("Shortest Distances:", d)
