@@ -1,0 +1,50 @@
+# Selection Sort
+a = list(map(int, input("Enter numbers: ").split()))
+
+for i in range(len(a)):
+    m = i
+
+    for j in range(i + 1, len(a)):
+        if a[j] < a[m]:
+            m = j
+
+    a[i], a[m] = a[m], a[i]
+
+print("Sorted Array:", a)
+
+# Prim's MST
+n = int(input("Enter number of vertices: "))
+
+g = []
+
+print("Enter matrix:")
+
+for i in range(n):
+    g.append(list(map(int, input().split())))
+
+s = [0] * n
+s[0] = 1
+
+print("MST Edges:")
+
+for k in range(n - 1):
+
+    min = 999
+
+    for i in range(n):
+
+        if s[i]:
+
+            for j in range(n):
+
+                if not s[j] and g[i][j]:
+
+                    if g[i][j] < min:
+
+                        min = g[i][j]
+                        x = i
+                        y = j
+
+    print(x, "-", y, "=", min)
+
+    s[y] = 11
