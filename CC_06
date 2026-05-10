@@ -1,0 +1,16 @@
+Integer a = 0;
+Integer b = 1;
+Integer c;
+
+System.debug(a);
+System.debug(b);
+
+for(Integer i = 1; i <= 5; i++)
+{
+    c = a + b;
+    
+    System.debug(c);
+    
+    a = b;
+    b = c;
+}
