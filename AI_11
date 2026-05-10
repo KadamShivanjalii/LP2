@@ -1,0 +1,18 @@
+# Medical Expert System
+
+symptom = input("Enter symptom: ").lower()
+
+if symptom == "fever":
+    print("You may have viral infection")
+
+elif symptom == "cold":
+    print("You may have common cold")
+
+elif symptom == "headache":
+    print("Take rest and drink water")
+
+elif symptom == "cough":
+    print("You may need cough syrup")
+
+else:
+    print("Consult doctor")
