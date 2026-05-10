@@ -1,0 +1,64 @@
+# Dijkstra Algorithm
+
+n = int(input("Enter number of vertices: "))
+
+g = []
+
+print("Enter cost matrix:")
+
+for i in range(n):
+    g.append(list(map(int, input().split())))
+
+v = [0] * n
+d = [999] * n
+
+s = int(input("Enter source vertex: "))
+
+d[s] = 0
+
+for k in range(n):
+
+    m = 999
+
+    for i in range(n):
+
+        if not v[i] and d[i] < m:
+            m = d[i]
+            u = i
+
+    v[u] = 1
+
+    for j in range(n):
+
+        if g[u][j] and d[u] + g[u][j] < d[j]:
+            d[j] = d[u] + g[u][j]
+
+print("Shortest Distances:", d)
+
+# Job Scheduling
+
+p = []
+dline = []
+
+n = int(input("\nEnter number of jobs: "))
+
+for i in range(n):
+
+    p.append(int(input("Enter profit: ")))
+    dline.append(int(input("Enter deadline: ")))
+
+job = list(zip(p, dline))
+
+job.sort(reverse=True)
+
+time = 0
+profit = 0
+
+for i in job:
+
+    if time < i[1]:
+
+        profit += i[0]
+        time += 1
+
+print("Maximum Profit:", profit)
