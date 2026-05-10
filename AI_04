@@ -1,0 +1,40 @@
+# 8 Puzzle Problem
+start = []
+
+print("Enter start state:")
+
+for i in range(3):
+    row = list(map(int, input().split()))
+    start.append(row)
+
+goal = [[1,2,3],
+        [4,5,6],
+        [7,8,0]]
+
+def display(state):
+    for row in state:
+        print(row)
+
+def heuristic(state):
+
+    count = 0
+
+    for i in range(3):
+        for j in range(3):
+
+            if state[i][j] != 0 and state[i][j] != goal[i][j]:
+                count += 1
+
+    return count
+
+print("Start State:")
+display(start)
+
+h = heuristic(start)
+
+print("Heuristic Value =", h)
+
+if h == 0:
+    print("Goal State Reached")
+else:
+    print("Goal State Not Reached")
