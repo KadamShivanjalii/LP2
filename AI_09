@@ -1,0 +1,61 @@
+# N Queen Problem
+
+n = int(input("Enter value of N: "))
+
+b = [[0]*n for i in range(n)]
+
+def safe(r, c):
+
+    for i in range(c):
+
+        if b[r][i] == 1:
+            return False
+
+    i = r
+    j = c
+
+    while i >= 0 and j >= 0:
+
+        if b[i][j] == 1:
+            return False
+
+        i -= 1
+        j -= 1
+
+    i = r
+    j = c
+
+    while i < n and j >= 0:
+
+        if b[i][j] == 1:
+            return False
+
+        i += 1
+        j -= 1
+
+    return True
+
+def solve(c):
+
+    if c >= n:
+        return True
+
+    for r in range(n):
+
+        if safe(r, c):
+
+            b[r][c] = 1
+
+            if solve(c + 1):
+                return True
+
+            b[r][c] = 0
+
+    return False
+
+solve(0)
+
+print("Solution:")
+
+for i in b:
+    print(i)
